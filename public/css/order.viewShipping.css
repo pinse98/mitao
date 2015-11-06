@@ -1,0 +1,72 @@
+.container {
+    padding: 0.8rem 0 1.0rem 2rem
+}
+
+.timeline {
+    margin-top: 1rem;
+    min-height: 5rem;
+    position: relative;
+    padding-left: 2rem
+}
+
+.timeline p {
+    font-size: 0.8rem;
+    color: rgba(0,0,0,.64)
+}
+
+.timeline.status1 {
+    border-left: .1rem #6ebad1 solid
+}
+
+.timeline.status0 {
+    border-left: .1rem #fd7d18 solid
+}
+
+.timeline.status0 .icon {
+    -webkit-animation: rotate1 1.5s infinite linear;
+    animation: rotate1 1.5s infinite linear
+}
+
+.timeline:nth-last-child(1) {
+    border-left: 0
+}
+
+.icon {
+    position: absolute;
+    z-index: 1;
+    top: -.5rem;
+    left: -1.6rem;
+    width: 3rem;
+    height: 3rem;
+    box-sizing: border-box;
+    background: #f7f7f7;
+    padding: .3rem;
+    border-radius: 50%;
+    overflow: hidden
+}
+
+.icon img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+@keyframes rotate1 {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes rotate1 {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
