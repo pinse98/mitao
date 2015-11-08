@@ -42,7 +42,7 @@
 </div>
 <div id="footer" class="footer hide" style="display: block;">
     <div class="box box_03">
-        <p>©2015 米淘优品</p>
+        <p>©2015 米淘优品 冀ICP备15026078号</p>
     </div>
 </div>
 </body>
