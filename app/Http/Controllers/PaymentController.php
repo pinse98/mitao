@@ -62,6 +62,7 @@ class PaymentController extends Controller
                 $submit = new AlipaySubmit($this->config);
                 $htmlText = $submit->buildRequestForm($params, 'get', '确认');
                 echo $htmlText;
+                exit;
             }
         }
         return redirect()->back();
