@@ -3,6 +3,5 @@
     <link rel="stylesheet" href="{{ asset('css/order.success.css') }}"/>
 @endsection
 @section('content')
-    {{--{!! $showBody !!}--}}
-    {{ $showBody }}
+    {!! $showBody !!}
 @endsection
