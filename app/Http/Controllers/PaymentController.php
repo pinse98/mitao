@@ -58,11 +58,11 @@ class PaymentController extends Controller
                     "_input_charset"	=> trim(strtolower($this->config['input_charset']))
                 ];
 
+                $data = [];
                 //建立请求
                 $submit = new AlipaySubmit($this->config);
-                $htmlText = $submit->buildRequestForm($params, 'get', '确认');
-                echo $htmlText;
-                exit;
+                $data['showBody'] = $submit->buildRequestForm($params, 'get', '确认');
+                return view('home.payment.alipay')->with($data);
             }
         }
         return redirect()->back();
