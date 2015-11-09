@@ -44,8 +44,7 @@ return [
 	| 签名方式 不需修改
 	|
 	*/
-    // 'sign_type' => strtoupper('RSA'),
-    'sign_type' => strtoupper('MD5'),
+    'sign_type' => strtoupper('RSA'),
 
     /*
 	|--------------------------------------------------------------------------
