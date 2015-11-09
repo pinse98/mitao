@@ -79,6 +79,8 @@ Route::group(['middleware' => 'AuthLogin'], function()
     Route::post('order/coupon/used', 'OrderController@couponUsed');
     // 订单支付
     Route::post('order/payment', 'PaymentController@pay');
+    // 支付宝微信浏览器
+    Route::get('order/payment/browser', 'PaymentController@browser');
     // 支付返回页面
     Route::post('order/result', 'PaymentController@returnPage');
 

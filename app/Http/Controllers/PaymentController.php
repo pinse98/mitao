@@ -135,4 +135,9 @@ class PaymentController extends Controller
         }
     }
 
+    public function browser()
+    {
+        return view('home.payment.browser');
+    }
+
 }
