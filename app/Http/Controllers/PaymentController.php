@@ -62,7 +62,7 @@ class PaymentController extends Controller
                 //建立请求
                 $submit = new AlipaySubmit($this->config);
                 // $data['goPay'] = $submit->alipay_gateway_new . $submit->buildRequestParaToString($params);
-                $data['$showBody'] = $submit->buildRequestForm($params, 'get', '确认支付');
+                $data['showBody'] = $submit->buildRequestForm($params, 'get', '确认支付');
                 // return view('home.payment.alipaywx')->with($data);
                 return view('home.payment.alipay')->with($data);
             }
