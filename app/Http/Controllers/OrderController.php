@@ -75,6 +75,7 @@ class OrderController extends Controller {
                 }
                 if ($sku->product) {
                     $order->product_name = $sku->product->name;
+                    $order->product_id = $sku->product->id;
                 }
                 $skuName = [];
                 if ($sku->network) {

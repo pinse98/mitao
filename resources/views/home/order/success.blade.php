@@ -23,20 +23,23 @@
         <div class="box box3">
             <div class="head"><span>请选择支付方式</span></div>
             <div class="list">
-                {{--<div class="item active">--}}
-                    {{--<div class="inner">--}}
-                        {{--<div class="p"><span class="iconfont pay-alipay">&#xe602;</span>&nbsp;<span>支付宝支付</span></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                <div class="item active">
+                <div class="item active" data-val="alipay">
                     <div class="inner">
-                        <div class="p"><span class="iconfont pay-icon">&#xe600;</span>&nbsp;<span>微信支付</span></div>
+                        <div class="p"><span class="iconfont pay-alipay">&#xe602;</span>&nbsp;<span>支付宝支付</span></div>
                     </div>
                 </div>
+                {{--<div class="item active" data-val="weixin">--}}
+                    {{--<div class="inner">--}}
+                        {{--<div class="p"><span class="iconfont pay-icon">&#xe600;</span>&nbsp;<span>微信支付</span></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
         <div class="box box5">
-            <a href="javascript:void(0);" onclick="alert('系统繁忙,请您联系米淘客服确认订单');" class="xm-button"><span>立即支付</span></a>
+            <form action="{{ url('order/payment') }}" method="post" id="sub-data">
+                <input name="orderId" value="{{ $order->id }}" type="hidden"/>
+            </form>
+            <a href="javascript:void(0);" onclick="$('#sub-data').submit();" class="xm-button"><span>立即支付</span></a>
         </div>
         <div class="b b3 list">
             <ul>
@@ -52,4 +55,10 @@
         </div>
     </div>
 </div>
+<script>
+    $('.item').click(function(){
+        $('.item').removeClass('active');
+        $(this).addClass('active');
+    });
+</script>
 @endsection

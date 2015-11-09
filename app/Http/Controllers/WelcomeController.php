@@ -3,8 +3,11 @@
 use App\Models\AdminAdvert;
 use App\Models\PhoneShow;
 use App\Models\PhoneUser;
+use App\Services\Alipay\AlipayCore;
+use App\Services\Alipay\AlipayRsa;
 use App\Services\VerifyCode;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Laracasts\Flash\Flash;
@@ -64,5 +67,10 @@ class WelcomeController extends Controller {
         $renders['products'] = $this->dataAll;
 		return view('home.index.show')->withDatas($renders);
 	}
+
+    public function test()
+    {
+        return;
+    }
 
 }
