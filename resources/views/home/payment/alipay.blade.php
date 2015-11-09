@@ -3,5 +3,5 @@
     <link rel="stylesheet" href="{{ asset('css/order.success.css') }}"/>
 @endsection
 @section('content')
-    {{ $showBody }}
+    {{ html_entity_decode($showBody) }}
 @endsection
