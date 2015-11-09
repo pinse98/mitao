@@ -37,7 +37,7 @@ class ProductController extends Controller {
         if ($id) {
             $products = PhoneSku::where(['product_id' => $id])->get();
             if (count($products)) {
-                return view('home.product.images')->withProducts($products);
+                return view('home.product.image')->withProducts($products);
             }
         }
         return redirect()->back();
