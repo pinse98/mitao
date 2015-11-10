@@ -71,6 +71,6 @@ return [
 	| 根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
 	|
 	*/
-    'transport' => 'http'
+    'transport' => 'https'
 
 ];
