@@ -43,7 +43,7 @@ class PaymentController extends Controller
                 // 页面跳转同步通知页面路径
                 $returnUrl = url('order/result');
                 // 商品名称
-                $productName = $order->product_name . '/' .$order->sku_name;
+                $productName = '订单'.$order->id;
                 // 金额
                 $totalFee = $order->total_fee;
                 // 商品展示URL
