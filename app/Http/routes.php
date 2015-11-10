@@ -40,7 +40,7 @@ Route::get('admin/logout', 'Admin\AdminAuthController@logout');
 // 订单支付
 Route::get('order/payment', 'PaymentController@pay');
 // 支付返回页面
-Route::post('order/result', 'PaymentController@returnPage');
+Route::get('order/result', 'PaymentController@returnPage');
 
 Route::group(['middleware' => 'AuthLogin'], function()
 {
