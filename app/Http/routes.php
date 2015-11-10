@@ -37,6 +37,10 @@ Route::get('admin/login', 'Admin\AdminAuthController@login');
 Route::post('admin/login', 'Admin\AdminAuthController@check');
 
 Route::get('admin/logout', 'Admin\AdminAuthController@logout');
+// 订单支付
+Route::get('order/payment', 'PaymentController@pay');
+// 支付返回页面
+Route::post('order/result', 'PaymentController@returnPage');
 
 Route::group(['middleware' => 'AuthLogin'], function()
 {
@@ -77,10 +81,6 @@ Route::group(['middleware' => 'AuthLogin'], function()
     Route::get('order/success/{orderId}', 'OrderController@success');
     // 验证优惠劵
     Route::post('order/coupon/used', 'OrderController@couponUsed');
-    // 订单支付
-    Route::get('order/payment', 'PaymentController@pay');
-    // 支付返回页面
-    Route::post('order/result', 'PaymentController@returnPage');
 
 });
 
