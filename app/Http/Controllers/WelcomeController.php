@@ -70,10 +70,7 @@ class WelcomeController extends Controller {
 
     public function test()
     {
-        $a = $_POST;
-        var_dump($a);
-        $b = $_GET;
-        var_dump($b);
+        AlipayCore::logResult(Input::all());
     }
 
 }
