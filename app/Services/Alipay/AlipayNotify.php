@@ -34,14 +34,13 @@ class AlipayNotify
     function verifyNotify()
     {
         // 判断POST来的数组是否为空
-        $params = Input::all();
-        $sign = Input::get('sign', 0);
-        $notifyId = Input::get('notify_id', null);
-        if (empty($params)) {
+        if (empty($_POST)) {
             return false;
         } else {
+            $sign = isset($_POST['sign']) ? $_POST['sign']: null;
+            $notifyId = isset($_POST['notify_id']) ? $_POST['notify_id'] : null;
             //生成签名结果
-            $isSign = $this->getSignVeryfy($params, $sign);
+            $isSign = $this->getSignVeryfy($_POST, $sign);
             //获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
             $responseTxt = 'false';
             if (!empty($notifyId)) {
@@ -77,14 +76,14 @@ class AlipayNotify
     function verifyReturn()
     {
         //判断POST来的数组是否为空
-        $params = Input::all();
-        $sign = Input::get('sign', null);
-        $notifyId = Input::get('notify_id', 0);
-        if (empty($params)) {
+
+        if (empty($_GET)) {
             return false;
         } else {
+            $sign = isset($_GET['sign']) ? $_GET['sign']: null;
+            $notifyId = isset($_GET['notify_id']) ? $_GET['notify_id'] : null;
             //生成签名结果
-            $isSign = $this->getSignVeryfy($params, $sign);
+            $isSign = $this->getSignVeryfy($_GET, $sign);
             //获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
             $responseTxt = 'false';
             if (!empty($notifyId)) {

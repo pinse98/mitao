@@ -70,8 +70,10 @@ class WelcomeController extends Controller {
 
     public function test()
     {
-        $params = Input::post();
-        var_dump($params);
+        $a = $_POST;
+        var_dump($a);
+        $b = $_GET;
+        var_dump($b);
     }
 
 }
