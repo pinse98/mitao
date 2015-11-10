@@ -77,13 +77,12 @@ Route::group(['middleware' => 'AuthLogin'], function()
     Route::get('order/success/{orderId}', 'OrderController@success');
     // 验证优惠劵
     Route::post('order/coupon/used', 'OrderController@couponUsed');
+    // 订单支付
+    Route::post('order/payment', 'PaymentController@pay');
+    // 支付返回页面
+    Route::post('order/result', 'PaymentController@returnPage');
 
 });
-
-// 订单支付
-Route::post('order/payment', 'PaymentController@pay');
-// 支付返回页面
-Route::post('order/result', 'PaymentController@returnPage');
 
 Route::group(['prefix' => 'api'], function(){
 
