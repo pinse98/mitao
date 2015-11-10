@@ -5,12 +5,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {
 
-
-    protected $except = [
-        'order/payment',
-        'order/result',
-        'api/notify'
-    ];
 	/**
 	 * Handle an incoming request.
 	 *
@@ -20,10 +14,7 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
-        // 使用CSRF
         return parent::handle($request, $next);
-        // 禁用CSRF
-        // return $next($request);
 	}
 
 }
