@@ -70,7 +70,7 @@ class WelcomeController extends Controller {
 
     public function test()
     {
-        AlipayCore::logResult(Input::get('username'));
+        AlipayCore::logResult(Input::get('name'));
     }
 
 }
