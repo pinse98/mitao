@@ -46,7 +46,8 @@ class AlipayNotify
             if (!empty($notifyId)) {
                 $responseTxt = $this->getResponse($notifyId);
             }
-
+            AlipayCore::logResult($responseTxt);
+            AlipayCore::logResult($isSign);
             //写日志记录
             //if ($isSign) {
             //	$isSignStr = 'true';
