@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('test', 'WelcomeController@test');
+Route::post('test', 'WelcomeController@test');
 
 // 用户登录
 Route::get('login', 'AuthController@login');

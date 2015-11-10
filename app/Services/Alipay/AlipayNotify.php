@@ -2,6 +2,7 @@
 
 use App\Services\Alipay\AlipayCore;
 use App\Services\Alipay\AlipayRsa;
+use Illuminate\Support\Facades\Input;
 
 class AlipayNotify
 {
@@ -33,15 +34,18 @@ class AlipayNotify
     function verifyNotify()
     {
         // 判断POST来的数组是否为空
-        if (empty($_POST)) {
+        $params = Input::all();
+        $sign = Input::get('sign', 0);
+        $notifyId = Input::get('notify_id', null);
+        if (empty($params)) {
             return false;
         } else {
             //生成签名结果
-            $isSign = $this->getSignVeryfy($_POST, $_POST["sign"]);
+            $isSign = $this->getSignVeryfy($params, $sign);
             //获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
             $responseTxt = 'false';
-            if (!empty($_POST["notify_id"])) {
-                $responseTxt = $this->getResponse($_POST["notify_id"]);
+            if (!empty($notifyId)) {
+                $responseTxt = $this->getResponse($notifyId);
             }
 
             //写日志记录
@@ -73,15 +77,18 @@ class AlipayNotify
     function verifyReturn()
     {
         //判断POST来的数组是否为空
-        if (empty($_GET)) {
+        $params = Input::all();
+        $sign = Input::get('sign', null);
+        $notifyId = Input::get('notify_id', 0);
+        if (empty($params)) {
             return false;
         } else {
             //生成签名结果
-            $isSign = $this->getSignVeryfy($_GET, $_GET["sign"]);
+            $isSign = $this->getSignVeryfy($params, $sign);
             //获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
             $responseTxt = 'false';
-            if (!empty($_GET["notify_id"])) {
-                $responseTxt = $this->getResponse($_GET["notify_id"]);
+            if (!empty($notifyId)) {
+                $responseTxt = $this->getResponse($notifyId);
             }
 
             //写日志记录
