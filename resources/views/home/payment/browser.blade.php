@@ -118,8 +118,6 @@
     </div>
 </div>
 <div class="J-weixin-tip-img weixin-tip-img"></div>
-
-<script src="{{ asset('js/ap.js') }}"></script>
 <script>
     if (location.hash.indexOf('error') != -1) {
         alert('参数错误，请检查');
@@ -136,12 +134,7 @@
                 tipImg.className = 'J-weixin-tip-img weixin-tip-img android'
             }
         } else {
-            var getQueryString = function (url, name) {
-                var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
-                if (reg.test(url)) return RegExp.$2.replace(/\+/g, " ");
-            };
-            var param = getQueryString(location.href, 'goto') || '';
-            location.href = param != '' ? _AP.decode(param) : 'order/payment/browser#error';
+            location.href = '{{ $redirect }}';
         }
     }
 </script>

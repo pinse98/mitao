@@ -64,15 +64,22 @@ class AlipaySubmit
 
     /**
      * 生成要请求给支付宝的参数数组
+     *
      * @param $para_temp 请求前的参数数组
-     * @return 要请求的参数数组字符串
+     * @param bool $encode 是否对字符串进行urlencode编码
+     * @return string 要请求的参数数组字符串
      */
-    function buildRequestParaToString($para_temp) {
+    function buildRequestParaToString($para_temp, $encode = true) {
         //待请求参数数组
         $para = $this->buildRequestPara($para_temp);
 
-        //把参数组中所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串，并对字符串做urlencode编码
-        $request_data = AlipayCore::createLinkstringUrlencode($para);
+        if ($encode) {
+            //把参数组中所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串，并对字符串做urlencode编码
+            $request_data = AlipayCore::createLinkstringUrlencode($para);
+        } else {
+            $request_data = AlipayCore::createLinkstring($para);
+        }
+
 
         return $request_data;
     }

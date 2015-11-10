@@ -1,5 +1,7 @@
 <?php namespace App\Services\Alipay;
 
+use App\Services\BrowserInfo;
+
 class AlipayCore
 {
     /**
@@ -200,5 +202,19 @@ class AlipayCore
             die("sorry, you have no libs support for charset changes.");
         }
         return $output;
+    }
+
+    /**
+     * 检测是否是微信浏览器
+     *
+     * @return bool
+     */
+    public static function isWeChatBrowser()
+    {
+        $ret = false;
+        if (strpos(BrowserInfo::userAgent(), 'MicroMessenger') !== false) {
+            $ret = true;
+        }
+        return $ret;
     }
 }

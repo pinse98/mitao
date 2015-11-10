@@ -101,8 +101,8 @@
         return c.join("")
     };
     b.pay = function(d) {
-        var c = encodeURIComponent(a.encode(d));
-        location.href = "/order/payment/browser?goto=" + c
+        // var c = encodeURIComponent(a.encode(d));
+        location.href = "/order/payment/browser?goto=" + d;
     };
     b.decode = function(c) {
         return a.decode(decodeURIComponent(c))

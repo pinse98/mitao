@@ -7,16 +7,22 @@ use App\Models\PhoneOrder;
 use App\Services\Alipay\AlipayCore;
 use App\Services\Alipay\AlipayNotify;
 use App\Services\Alipay\AlipaySubmit;
+use App\Services\BrowserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Routing\UrlGenerator;
 
 class PaymentController extends Controller
 {
     public $config;
 
-    public function __construct()
+    public $generator;
+
+    public function __construct(UrlGenerator $generator)
     {
         $this->config = config('alipay');
+
+        $this->generator = $generator;
     }
 
     /**
@@ -60,11 +66,14 @@ class PaymentController extends Controller
 
                 $data = [];
                 //建立请求
-                $submit = new AlipaySubmit($this->config);
-                $data['goPay'] = $submit->alipay_gateway_new . $submit->buildRequestParaToString($params);
-                // $data['showBody'] = $submit->buildRequestForm($params, 'get', '确认支付');
-                return view('home.payment.alipaywx')->with($data);
-                // return view('home.payment.alipay')->with($data);
+                if (AlipayCore::isWeChatBrowser()) {
+                    $data['redirect'] = $this->generator->previous();
+                    return view('home.payment.browser')->with($data);
+                } else {
+                    $submit = new AlipaySubmit($this->config);
+                    $data['showBody'] = $submit->buildRequestForm($params, 'GET', '确认支付');
+                    return view('home.payment.alipay')->with($data);
+                }
             }
         }
         return redirect()->back();
