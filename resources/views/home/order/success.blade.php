@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="box box5">
-            <form action="{{ url('order/payment') }}" method="post" id="sub-data">
+            <form action="{{ url('order/payment') }}" method="get" id="sub-data">
                 <input name="orderId" value="{{ $order->id }}" type="hidden"/>
                 <input name="_token" value="{{ csrf_token() }}" type="hidden"/>
             </form>
