@@ -5,6 +5,12 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {
 
+
+    protected $except = [
+        'order/payment',
+        'order/result',
+        'api/notify'
+    ];
 	/**
 	 * Handle an incoming request.
 	 *
